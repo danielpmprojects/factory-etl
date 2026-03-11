@@ -66,6 +66,33 @@ services:
     depends_on:
       - elasticsearch
 
+  processor:
+    build: .
+    container_name: processor
+    restart: on-failure  # Si Kafka/ES no están listos, intentará reiniciar
+    depends_on:
+      - kafka
+      - elasticsearch
+    environment:
+      # Sobrescribimos las variables para que apunten a los contenedores
+      - KAFKA_BROKERS=kafka:9092
+      - ELASTICSEARCH_HOST=http://elasticsearch
+      - ELASTICSEARCH_PORT=9200
+    env_file:
+      - .env
+  
+  simulator:
+    build: .
+    container_name: simulator
+    restart: on-failure  # Reinicia si Kafka no está listo al instante
+    command: ["python", "src/simulator.py"] # Sobrescribe el CMD del Dockerfile
+    depends_on:
+      - kafka
+    environment:
+      - KAFKA_BROKERS=kafka:9092
+    env_file:
+      - .env
+
 volumes:
   kafka_data:
   es_data:
