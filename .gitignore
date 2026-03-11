@@ -1,0 +1,85 @@
+# Archivos compilados en byte / optimizados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Extensiones en C
+*.so
+
+# Distribución / Empaquetado
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs de instalación (pip)
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Reportes de cobertura y pruebas unitarias
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Entornos virtuales
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook (en caso de que uses)
+.ipynb_checkpoints
+
+# IDEs / Editores
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Docker / OS
+.DS_Store
+Thumbs.db
+
+# Específicos del proyecto
+logs/
+data/
+
+# Logs adicionales y variables de entorno
+*.log
+.env.*
+!.env.example
+
+# Linters y cachés
+.mypy_cache/
+.ruff_cache/
+
