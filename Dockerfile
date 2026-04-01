@@ -14,9 +14,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia el código fuente del proyecto
 COPY src/ src/
 
-# Copia el archivo de variables de entorno (si es necesario para despliegue por defecto)
-# Opcionalmente puedes montar el .env directamente en compose, pero lo copiamos por comodidad.
-COPY .env .env
+# NOTA: No copiamos el archivo .env a la imagen por seguridad y porque no existe en el repositorio (CI/CD).
+# Las variables de entorno se deben proporcionar en tiempo de ejecución (ej. mediante docker-compose con env_file).
 
 # Asegura que Python genere la salida sin usar un buffer (útil para ver logs en tiempo real en Docker)
 ENV PYTHONUNBUFFERED=1
