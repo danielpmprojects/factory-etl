@@ -12,6 +12,7 @@ def create_raw_consumer():
     return KafkaConsumer(
         raw_topic,
         bootstrap_servers=KAFKA_BROKERS,
+        api_version=(3, 0, 0),
         group_id=GROUP_ID,
         value_deserializer=lambda v: json.loads(v.decode("utf-8")),
         auto_offset_reset="latest",
@@ -21,7 +22,9 @@ def create_raw_consumer():
 def create_producer():
     return KafkaProducer(
         bootstrap_servers=KAFKA_BROKERS,
-        value_serializer=lambda x: json.dumps(x).encode('utf-8')
+        value_serializer=lambda x: json.dumps(x).encode('utf-8'),
+        # Añade esto para evitar el error NoBrokersAvailable
+        api_version=(3, 0, 0) 
     )
 
 producer = create_producer()
